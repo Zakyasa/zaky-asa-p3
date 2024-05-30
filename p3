@@ -1,0 +1,58 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Electronics{
+    public:
+        string power;
+        string type;
+             
+         Electronics(string a, string b): power(a), type(b){}
+         
+          void turnOn() {
+        cout << type << " sedang dinyalakan." << endl;
+    }
+
+    void turnOff() {
+        cout << type << " sedang dimatikan." << endl;
+    }
+};
+     
+class Furniture {
+    public:
+        string material;
+        string name;
+
+    Furniture(string d, string e) : material(d), name(e) {}
+
+    void assemble() {
+        cout << name << " sedang dirakit." << endl;
+    }
+
+    void disassemble() {
+        cout << name << " sedang dibongkar." << endl;
+    }
+};     
+     
+
+ class SmartChair : public Electronics, public Furniture {
+    public:
+        SmartChair(string a, string b, string d, string e)
+          : Electronics(a, b), Furniture(d, e) {}
+
+    void showFeatures() {
+        cout << "SmartChair dengan daya " << power << ", jenis " << type
+             << ", bahan " << material << ", dan nama " << name << "." << endl;
+    }
+};
+
+int main() {
+ SmartChair smartChair("20W", "robot pintar", "besi", "kamar Nyaman");
+    smartChair.turnOn();
+    smartChair.assemble();
+    smartChair.showFeatures();
+    smartChair.disassemble();
+    smartChair.turnOff();
+
+    return 0;
+}
